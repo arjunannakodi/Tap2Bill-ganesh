@@ -5,9 +5,14 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "build:web": "mkdir -p public && cp index.html styles.css print.css app.js icon.png public/ || echo 'Windows copy failed, skipping'"
   },
-  "keywords": ["billing", "pos", "invoice"],
+  "keywords": [
+    "billing",
+    "pos",
+    "invoice"
+  ],
   "author": "Sri Ganesh Stationery",
   "license": "MIT",
   "devDependencies": {
