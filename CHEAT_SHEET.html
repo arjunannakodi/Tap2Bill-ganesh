@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System - Quick Reference Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background: white;
+        }
+
+        .cheat-sheet {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #f97316;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .section {
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .section h2 {
+            color: #f97316;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #f97316;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #ea580c;
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #f97316;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .key-combo {
+            display: inline-block;
+            background: #f3f4f6;
+            border: 2px solid #d1d5db;
+            border-radius: 5px;
+            padding: 5px 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .tip-box {
+            background: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #ea580c;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .button-demo {
+            background: #f97316;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .workflow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .workflow-step {
+            background: #f97316;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+            margin: 5px;
+            min-width: 120px;
+        }
+
+        .workflow-arrow {
+            font-size: 2rem;
+            color: #f97316;
+            margin: 0 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background: #f97316;
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .cheat-sheet {
+                border: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cheat-sheet">
+        <div class="header">
+            <h1>🕉️ Sri Ganesh Stationery</h1>
+            <p>Billing System - Quick Reference Card</p>
+        </div>
+
+        <div class="content">
+            <!-- Section 1: Getting Started -->
+            <div class="section">
+                <h2>🚀 Getting Started</h2>
+                <ol class="step-list">
+                    <li>Double-click <strong>START_APP.bat</strong></li>
+                    <li>Open browser</li>
+                    <li>Go to <strong>localhost:8000</strong></li>
+                    <li>Start billing!</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Tip:</strong> Keep the black window open while using the app!
+                </div>
+            </div>
+
+            <!-- Section 2: Keyboard Shortcuts -->
+            <div class="section">
+                <h2>⌨️ Keyboard Shortcuts</h2>
+                <table>
+                    <tr>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><span class="key-combo">0-9</span></td>
+                        <td>Add product by number</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-combo">Enter</span></td>
+                        <td>Generate bill</td>
+                    </tr>
+                    <tr>
+                        <td><span class="key-combo">Esc</span></td>
+                        <td>Close modal/search</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Section 3: Adding Products -->
+            <div class="section">
+                <h2>📦 Adding Products (3 Ways)</h2>
+
+                <h3>Method 1: Click Buttons</h3>
+                <p>Click numbered buttons to add products</p>
+                <div class="button-grid">
+                    <div class="button-demo">1</div>
+                    <div class="button-demo">2</div>
+                    <div class="button-demo">3</div>
+                    <div class="button-demo">4</div>
+                    <div class="button-demo">5</div>
+                </div>
+
+                <h3>Method 2: Type Numbers</h3>
+                <p>Type product number on keyboard (e.g., <span class="key-combo">5</span> or <span
+                        class="key-combo">15</span>)</p>
+
+                <h3>Method 3: Search</h3>
+                <p>Type product name in search box and click result</p>
+            </div>
+
+            <!-- Section 4: Billing Workflow -->
+            <div class="section">
+                <h2>🧾 Billing Workflow</h2>
+                <div class="workflow">
+                    <div class="workflow-step">Add Items</div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">Adjust Qty</div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">Generate</div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-step">Print</div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>⚡ Speed Tip:</strong> Use keyboard numbers for fastest billing!
+                </div>
+            </div>
+
+            <!-- Section 5: Product Management -->
+            <div class="section full-width">
+                <h2>🛠️ Product Management</h2>
+                <ol class="step-list">
+                    <li>Click <strong>"Manage Products"</strong> button</li>
+                    <li>Fill in: Product Number, Name, Price, Unit</li>
+                    <li>Click <strong>"Add Product"</strong></li>
+                    <li>Product appears in grid immediately</li>
+                </ol>
+
+                <table>
+                    <tr>
+                        <th>Field</th>
+                        <th>Example</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Product Number</td>
+                        <td>1</td>
+                        <td>Must be unique (1-999)</td>
+                    </tr>
+                    <tr>
+                        <td>Product Name</td>
+                        <td>Pencil</td>
+                        <td>Any name</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>5.00</td>
+                        <td>In Rupees (₹)</td>
+                    </tr>
+                    <tr>
+                        <td>Unit</td>
+                        <td>piece</td>
+                        <td>piece/box/packet/pack/dozen/ream</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Section 6: Common Tasks -->
+            <div class="section">
+                <h2>📋 Common Tasks</h2>
+
+                <h3>Increase Quantity</h3>
+                <p>Click <strong>+</strong> button next to item</p>
+
+                <h3>Decrease Quantity</h3>
+                <p>Click <strong>−</strong> button next to item</p>
+
+                <h3>Remove Item</h3>
+                <p>Click <strong>×</strong> button on item</p>
+
+                <h3>Clear All Items</h3>
+                <p>Click <strong>"Clear All"</strong> button</p>
+
+                <h3>View History</h3>
+                <p>Click <strong>"Bill History"</strong> button</p>
+            </div>
+
+            <!-- Section 7: Troubleshooting -->
+            <div class="section">
+                <h2>🔧 Troubleshooting</h2>
+
+                <h3>Can't connect?</h3>
+                <p>✓ Check START_APP.bat is running<br>
+                    ✓ Try localhost:8000 again</p>
+
+                <h3>Products not showing?</h3>
+                <p>✓ Add products in "Manage Products"<br>
+                    ✓ Check product number is correct</p>
+
+                <h3>Can't type numbers?</h3>
+                <p>✓ Click outside search box first<br>
+                    ✓ Don't be in any input field</p>
+
+                <h3>Bill won't print?</h3>
+                <p>✓ Check printer is on<br>
+                    ✓ Try "Save as PDF" instead</p>
+            </div>
+
+            <!-- Section 8: Smart Numbering -->
+            <div class="section full-width">
+                <h2>🎯 Smart Product Numbering</h2>
+                <table>
+                    <tr>
+                        <th>Range</th>
+                        <th>Category</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td>1-10</td>
+                        <td>Pens & Pencils</td>
+                        <td>Pencil, Pen (Blue), Pen (Black), Eraser</td>
+                    </tr>
+                    <tr>
+                        <td>11-20</td>
+                        <td>Notebooks & Registers</td>
+                        <td>Single Line, Double Line, Drawing Book</td>
+                    </tr>
+                    <tr>
+                        <td>21-30</td>
+                        <td>Art Supplies</td>
+                        <td>Sketch Pens, Crayons, Colors, Brushes</td>
+                    </tr>
+                    <tr>
+                        <td>31-40</td>
+                        <td>Office Supplies</td>
+                        <td>Stapler, Pins, Tape, Scissors, Files</td>
+                    </tr>
+                    <tr>
+                        <td>41-50</td>
+                        <td>Paper Products</td>
+                        <td>A4 Paper, Chart Paper, Craft Paper</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Section 9: Daily Routine -->
+            <div class="section">
+                <h2>📅 Daily Routine</h2>
+
+                <h3>Morning</h3>
+                <ol class="step-list">
+                    <li>Start START_APP.bat</li>
+                    <li>Open browser</li>
+                    <li>Ready to bill!</li>
+                </ol>
+
+                <h3>During Day</h3>
+                <ol class="step-list">
+                    <li>Add items</li>
+                    <li>Generate bill</li>
+                    <li>Print</li>
+                    <li>New bill</li>
+                    <li>Repeat!</li>
+                </ol>
+
+                <h3>Evening</h3>
+                <ol class="step-list">
+                    <li>Check history</li>
+                    <li>Close browser</li>
+                    <li>Close black window</li>
+                </ol>
+            </div>
+
+            <!-- Section 10: Quick Tips -->
+            <div class="section">
+                <h2>💡 Quick Tips</h2>
+
+                <div class="tip-box">
+                    <strong>Speed:</strong> Memorize common product numbers
+                </div>
+
+                <div class="tip-box">
+                    <strong>Organization:</strong> Group similar products together
+                </div>
+
+                <div class="tip-box">
+                    <strong>Efficiency:</strong> Use keyboard instead of mouse
+                </div>
+
+                <div class="tip-box">
+                    <strong>Backup:</strong> Don't clear browser data
+                </div>
+
+                <div class="tip-box">
+                    <strong>Practice:</strong> Make test bills to learn
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Print this page for reference
+        function printReference() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

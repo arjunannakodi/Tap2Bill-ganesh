@@ -1,0 +1,17 @@
+@echo off
+echo ========================================
+echo  Sri Ganesh Stationery - Billing System
+echo ========================================
+echo.
+echo Starting local server...
+echo.
+echo The application will open in your browser at:
+echo http://localhost:8000
+echo.
+echo Press Ctrl+C to stop the server
+echo.
+echo ========================================
+echo.
+
+cd /d "%~dp0"
+python -m http.server 8000

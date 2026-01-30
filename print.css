@@ -1,0 +1,96 @@
+/* Add this at the very end of your styles.css file */
+
+/* ============================================
+   AGGRESSIVE PRINT STYLES - BILL ONLY
+   ============================================ */
+@media print {
+
+    /* Hide EVERYTHING by default */
+    * {
+        visibility: hidden !important;
+    }
+
+    /* Show ONLY the bill modal and its contents */
+    #billModal,
+    #billModal *,
+    #billPreview,
+    #billPreview * {
+        visibility: visible !important;
+    }
+
+    /* Reset body */
+    body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Hide all other modals completely */
+    #productModal,
+    #settingsModal,
+    #historyModal {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Position bill modal for print */
+    #billModal {
+        position: static !important;
+        background: none !important;
+        backdrop-filter: none !important;
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #billModal .modal-content {
+        box-shadow: none !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    #billModal .modal-header,
+    #billModal .modal-actions,
+    #billModal .modal-close {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    #billModal .modal-body {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Ensure bill preview is visible and positioned */
+    #billPreview {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+    }
+
+    /* Prevent page breaks */
+    table {
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    td,
+    th {
+        page-break-inside: avoid;
+    }
+
+    @page {
+        margin: 0.5cm;
+        size: A4 portrait;
+    }
+}

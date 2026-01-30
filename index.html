@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap2Bill - Billing System</title>
+    <meta name="description" content="Professional billing system for Sri Ganesh Stationery">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="billing-container">
+        <!-- Top Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h1 class="shop-title">Tap2Bill</h1>
+                <p class="header-subtitle">Billing System</p>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" id="manageProductsBtn">
+                    Products
+                </button>
+                <button class="header-btn" id="viewHistoryBtn">
+                    <span class="btn-icon"></span>
+                    History
+                </button>
+                <button class="header-btn" id="settingsBtn">
+                    Settings
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Billing Area -->
+        <main class="billing-main">
+            <!-- Left: Product Selection -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Select Products</h2>
+                    <div class="search-box">
+                        <input type="text" id="productSearch" class="search-input"
+                            placeholder=" Search product by name or number...">
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productGrid">
+                    <!-- Products will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Right: Current Bill -->
+            <section class="bill-section">
+                <div class="bill-header">
+                    <h2>Current Bill</h2>
+                    <button class="clear-btn" id="clearBillBtn">Clear All</button>
+                </div>
+
+                <div class="bill-items" id="billItems">
+                    <div class="empty-bill">
+                        <div class="empty-icon">�</div>
+                        <p>No items added</p>
+                        <small>Click products to add</small>
+                    </div>
+                </div>
+
+                <div class="bill-summary">
+                    <div class="summary-row">
+                        <span>Total Items:</span>
+                        <span id="totalItems">0</span>
+                    </div>
+                    <div class="summary-row subtotal">
+                        <span>Subtotal:</span>
+                        <span>₹<span id="subtotal">0.00</span></span>
+                    </div>
+                    <div class="summary-row tax">
+                        <span>GST (18%):</span>
+                        <span>₹<span id="taxAmount">0.00</span></span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Grand Total:</span>
+                        <span>₹<span id="grandTotal">0.00</span></span>
+                    </div>
+                </div>
+
+                <div class="bill-actions">
+                    <button class="btn-generate" id="generateBillBtn" disabled>
+                        <span class="btn-icon"></span>
+                        Generate Bill
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Management Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Product Management</h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Add Product Form -->
+                <div class="form-section">
+                    <h3>Add New Product</h3>
+                    <form id="addProductForm" class="product-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productNumber">Product Number *</label>
+                                <input type="number" id="productNumber" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productName">Product Name *</label>
+                                <input type="text" id="productName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">Price (₹) *</label>
+                                <input type="number" id="productPrice" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productUnit">Unit *</label>
+                                <select id="productUnit" required>
+                                    <option value="piece">Piece</option>
+                                    <option value="box">Box</option>
+                                    <option value="packet">Packet</option>
+                                    <option value="pack">Pack</option>
+                                    <option value="dozen">Dozen</option>
+                                    <option value="ream">Ream</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+                </div>
+
+                <!-- Product List -->
+                <div class="form-section">
+                    <h3>Existing Products</h3>
+                    <div class="product-list-container">
+                        <table class="product-table" id="productTable">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Unit</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <!-- Products will be listed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bill Preview Modal -->
+    <div id="billModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Bill Preview</h2>
+                <button class="modal-close" id="closeBillModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="billPreview" class="bill-preview">
+                    <!-- Bill content will be generated here -->
+                </div>
+                <div class="modal-actions">
+                    <button id="printBillBtn" class="btn btn-primary">
+                        <span class="btn-icon">🖨️</span>
+                        Print Bill
+                    </button>
+                    <button id="savePdfBtn" class="btn btn-secondary">
+                        <span class="btn-icon">💾</span>
+                        Save as PDF
+                    </button>
+                    <button id="newBillBtn" class="btn btn-success">
+                        <span class="btn-icon">➕</span>
+                        New Bill
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="modal-close" id="closeSettingsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="settingsForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="shopName">Shop Name</label>
+                        <input type="text" id="shopName" value="Sri Ganesh Stationery">
+                    </div>
+                    <div class="form-group">
+                        <label for="shopAddress">Address</label>
+                        <textarea id="shopAddress" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="shopPhone">Phone Number</label>
+                        <input type="tel" id="shopPhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="shopGST">GST Number (Optional)</label>
+                        <input type="text" id="shopGST">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Bill History</h2>
+                <button class="modal-close" id="closeHistoryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="billHistory" class="bill-history">
+                    <!-- Bill history will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
